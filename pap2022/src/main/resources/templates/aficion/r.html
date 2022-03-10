@@ -1,0 +1,46 @@
+<div class="container">
+<h1>AFICIONES</h1>
+
+<form action="/aficion/c">
+	<input type="submit" class="btn btn-primary" value="Nueva Aficion"/>
+</form>
+<br>
+
+<h3> Lista de aficiones </h3>
+
+<table class="table table-hover">
+<thead class="thead-dark">
+ <tr> 	
+	<th scope="col">Nombre</th>
+	<th></th>
+	<th></th>
+ </tr>
+ </thead>
+
+<tbody>
+	<tr th:each="aficion : ${aficiones}">
+	<td th:text= "${aficion.nombre}"/>
+	
+	<td class="row"> 
+	  <form id="id-form" action="/aficion/u" method="post">
+			<input type="hidden" name="aficionId" th:value="${aficion.id}"/>
+			<button onclick="submit()">
+			<img src="/img/lapiz.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	
+	<td> 
+	  <form id="id-form" action="/aficion/d" method="post">
+			<input type="hidden" name="borrarIdAficion" th:value="${aficion.id}"/>
+			<button onclick="submit()">
+			<img src="/img/papelera.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	  
+ </tr>
+ </tbody>
+</table>
+</div>
+</html>

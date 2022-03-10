@@ -1,0 +1,52 @@
+<div class="container">
+<h1>EMPRESA</h1>
+
+<form action="/empresa/c">
+	<input type="submit" class="btn btn-primary" value="Nueva empresa"/>
+</form>
+<br>
+
+<h3> Lista de empresas </h3>
+
+<table class="table table-hover">
+<thead class="thead-dark">
+ <tr> 	
+	<th scope="col">Nombre</th>
+	<th></th>
+	<th></th>
+ </tr>
+</thead>
+
+<tbody>
+ <tr th:each="empresa : ${empresas}">
+	<td th:text= "${empresa.nombre}"></td>
+	
+	<!--
+	<td><th:block th:each="persona:${pais.nativos}" th:text="|${persona.nombre}, |"/>
+		<th:block th:text="|(${pais.nativos.size()})|"/> 
+		</td> -->
+	
+	<td> 
+	  <form id="id-form" action="/empresa/u" method="post">
+			<input type="hidden" name="empresaId" th:value="${empresa.id}"/>
+			<button onclick="submit()">
+			<img src="/img/lapiz.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	
+	<td> 
+	  <form id="id-form" action="/empresa/d" method="post">
+			<input type="hidden" name="borrarIdEmpresa" th:value="${empresa.id}"/>
+			<button onclick="submit()">
+			<img src="/img/papelera.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	
+ </tr>
+ 
+ </tbody>
+ </table>
+</div>
+</html>

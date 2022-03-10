@@ -1,0 +1,65 @@
+<div class="container">
+<h1>EDITAR PERSONA</h1>
+
+<form action="/persona/uPost" method="POST">
+
+	<input type="hidden" name="idPersona" th:value="${persona.id}"/>
+
+	<div>
+	Nombre:
+	<label for="idNombre"/>
+	<input type="text" id="idNombre" th:value="${persona.nombre}" name="nombre" autofocus="autofocus"/>
+	</div>
+	
+	<div>
+	Fecha de nacimiento:
+	<label for="idFecha"/>
+	<input type="date" id="idFecha" th:value="${persona.fecha}" name="fecha"/>
+	</div>
+	
+	<div>
+	 <span>Pais de nacimiento</span>
+	  <select name="IdPaisNace">
+	    <option th:each="pais:${paises}" 
+	    	th:value="${pais.id}" 
+	    	th:text="${pais.nombre}" 
+	    	th:selected="${pais.id == persona.nace.id}"></option>
+	  </select>
+	</div>
+	
+	
+	<div>
+	 <span>Pais de residencia</span>
+	  <select name="IdPaisReside">
+	    <option th:each="pais:${paises}" 
+	    	th:value="${pais.id}" 
+	    	th:text="${pais.nombre}" 
+	    	th:selected="${pais.id == persona.reside.id}"></option>
+	  </select>
+	</div>
+	
+	  
+	 <fieldset>
+	  <legend>Aficiones que gustan</legend>
+	   <div th:each="aficion:${aficiones}">
+	    <input th:id="|id-${aficion.id}|" type="checkbox" name="idsAficion[]" 
+	    		th:value="${aficion.id}"  
+	    		th:checked="${persona.aficionesGusta.contains(aficion)}"/>
+	    <label th:for="|id-${aficion.id}|" th:text="${aficion.nombre}"/>
+	   </div>
+	 </fieldset>
+	 
+	 <fieldset>
+	  <legend>Aficiones que odia</legend>
+	   <div th:each="aficion:${aficiones}">
+	    <input th:id="|id-${aficion.id}|" type="checkbox" name="idsAficionOdia[]" 
+	    		th:value="${aficion.id}"  
+	    		th:checked="${persona.aficionesOdia.contains(aficion)}"/>
+	    <label th:for="|id-${aficion.id}|" th:text="${aficion.nombre}"/>
+	   </div>
+	 </fieldset>
+	
+	<input type="submit" class="btn btn-warning" value="Editar Persona"/>
+</form>
+</div>
+<br>

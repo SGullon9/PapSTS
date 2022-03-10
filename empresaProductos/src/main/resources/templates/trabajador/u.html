@@ -1,0 +1,39 @@
+<div class="container">
+<h1>EDITAR TRABAJADOR</h1>
+
+<form action="/trabajador/uPost" method="POST">
+
+	<input type="hidden" name="idTrabajador" th:value="${trabajador.id}"/>
+
+	<div>
+	Nombre:
+	<label for="idNombre"/>
+	<input type="text" id="idNombre" th:value="${trabajador.nombre}" name="nombre" autofocus="autofocus"/>
+	</div>
+	
+	<div>
+	 <span>Empresa</span>
+	  <select name="IdEmpresa">
+	    <option th:each="empresa:${empresas}" 
+	    	th:value="${empresa.id}" 
+	    	th:text="${empresa.nombre}" 
+	    	th:selected="${empresa.id == trabajador.trabaja.id}"></option>
+	  </select>
+	</div>
+	
+	  
+	 <fieldset>
+	  <legend>Productos</legend>
+	   <div th:each="producto:${productos}">
+	    <input th:id="|id-${producto.id}|" type="checkbox" name="idsProductos[]" 
+	    		th:value="${producto.id}"  
+	    		th:checked="${trabajador.productosHechos.contains(producto)}"/>
+	    <label th:for="|id-${producto.id}|" th:text="${producto.nombre}"/>
+	   </div>
+	 </fieldset>
+	
+	
+	<input type="submit" class="btn btn-warning" value="Editar"/>
+</form>
+</div>
+<br>

@@ -1,0 +1,24 @@
+<div class="container">
+<h1>EDITAR LOCALIDAD</h1>
+
+<form action="/localidad/uPost" method="POST">
+	<label for="idNombre"/>
+	Nombre:
+	<input type="text" th:value="${localidad.nombre}" id="idNombre" name="nombre"/>
+	
+	<div>
+	Provincias: 
+		<select name="provincias">
+			<option th:attr="selected = (${localidad.provincia == 'Madrid' ?'selected':null})">Madrid</option>
+			<option th:attr="selected = (${localidad.provincia == 'Segovia'? 'selected':null})">Segovia</option>
+			<option th:attr="selected = (${localidad.provincia == 'Zaragoza'? 'selected':null})">Zaragoza</option>
+			<option th:attr="selected = (${localidad.provincia == 'Badajoz'? 'selected':null})">Badajoz</option>
+		</select>
+	</div>
+	
+	<input type="hidden" name="idLocalidad" th:value="${localidad.id}"/>
+	
+	<input type="submit" class="btn btn-warning" value="Editar"/>
+</form>
+</div>
+<br>

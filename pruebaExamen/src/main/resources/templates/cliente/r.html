@@ -1,0 +1,52 @@
+<div class="container">
+<h1>PERSONAS</h1>
+
+<form action="/cliente/c">
+	<input type="submit" class="btn btn-primary" value="Nuevo Cliente"/>
+</form>
+<br>
+
+<h3> Lista de clientes </h3>
+
+<table class="table table-hover">
+<thead class="thead-dark">
+ <tr> 	
+	<th scope="col">Nombre</th>
+	<th scope="col">Localidad</th>
+	<th scope="col">¿Madrileño?</th>
+	<th></th>
+	<th></th>
+ </tr>
+</thead>
+
+<tbody>
+<tr th:each="cliente : ${clientes}">
+	<td th:text= "${cliente?.nombre}"/>
+	
+	<td th:text= "${cliente.suLocalidad.nombre}"/>
+	
+	<td><th:block th:text="${cliente.suLocalidad.provincia} == 'Madrid' ? 'SI' : 'NO'"/>
+	
+	<td> 
+	  <form id="id-form" action="/cliente/u" method="post">
+			<input type="hidden" name="idCliente" th:value="${cliente.id}"/>
+			<button onclick="submit()">
+			<img src="/img/lapiz.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	
+	<td> 
+	  <form id="id-form" action="/cliente/d" method="post">
+			<input type="hidden" name="borrarIdCliente" th:value="${cliente.id}"/>
+			<button onclick="submit()">
+			<img src="/img/papelera.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+</tr>
+
+ </tbody>
+</table>
+</div>
+</html>

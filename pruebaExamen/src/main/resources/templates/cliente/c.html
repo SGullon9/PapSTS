@@ -1,0 +1,22 @@
+<div class="container">
+<h1>NUEVO CLIENTE</h1>
+
+<form action="/cliente/cPost" method="POST">
+	<div>
+	Nombre:
+	<label for="idNombre"/>
+	<input type="text" id="idNombre" name="nombre" autofocus="autofocus"/>
+	</div>
+	
+	
+	<div>
+	 <span>Localidad</span>
+	  <select name="IdLocalidad">
+	    <option th:each="localidad:${localidades}" th:value="${localidad.id}" th:text="|${localidad.nombre}(${localidad.provincia})|"></option>
+	  </select>
+	</div>
+	
+	<input type="submit" class="btn btn-warning" value="Crear Cliente"/>
+</form>
+</div>
+<br>

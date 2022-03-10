@@ -1,0 +1,22 @@
+<div class="container">
+<h1>NUEVA LOCALIDAD</h1>
+
+<form action="/localidad/cPost" method="POST">
+	<label for="idNombre"/>
+	Nombre: 
+	<input type="text" id="idNombre" name="nombre"/>
+	
+	<div>
+	Provincias: 
+		<select name="provincias">
+			<option>Madrid</option>
+			<option>Segovia</option>
+			<option>Zaragoza</option>
+			<option>Badajoz</option>
+		</select>
+	</div>
+	
+	<input type="submit" class="btn btn-warning" value="Crear"/>
+</form>
+</div>
+<br>

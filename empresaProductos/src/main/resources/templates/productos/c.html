@@ -1,0 +1,22 @@
+<div class="container">
+<h1>NUEVO PRODUCTO</h1>
+
+<form action="/productos/cPost" method="POST">
+	<label for="idNombre"/>
+	Nombre:
+	<input type="text" id="idNombre" name="nombre"/>
+	
+<div>
+	Tipos:
+	<select name="tipos">
+		<option>Pasta</option>
+		<option>Lacteo</option>
+		<option>Legumbre</option>
+		<option>Refresco</option>
+	</select>
+</div>
+	
+	<input type="submit" class="btn btn-warning" value="Crear"/>
+</form>
+</div>
+<br>

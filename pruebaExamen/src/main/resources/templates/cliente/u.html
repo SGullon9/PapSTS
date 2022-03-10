@@ -1,0 +1,29 @@
+<div class="container">
+<h1>EDITAR CLIENTE</h1>
+
+<form action="/cliente/uPost" method="POST">
+
+	<input type="hidden" name="idCliente" th:value="${cliente.id}"/>
+
+	<div>
+	Nombre:
+	<label for="idNombre"/>
+	<input type="text" id="idNombre" th:value="${cliente.nombre}" name="nombre" autofocus="autofocus"/>
+	</div>
+	
+	
+	<div>
+	 <span>Localidad</span>
+	  <select name="IdLocalidad">
+	    <option th:each="localidad:${localidades}" 
+	    	th:value="${localidad.id}" 
+	    	th:text="${localidad.nombre}" 
+	    	th:selected="${localidad.id == cliente.suLocalidad.id}"></option>
+	  </select>
+	</div>
+		  
+	
+	<input type="submit" class="btn btn-warning" value="Editar Cliente"/>
+</form>
+</div>
+<br>

@@ -1,0 +1,56 @@
+<div class="container">
+<h1>TRABAJADORES</h1>
+
+<form action="/trabajador/c">
+	<input type="submit" class="btn btn-primary" value="Nuevo Trabajador"/>
+</form>
+<br>
+
+<h3> Lista de trabajadores </h3>
+
+<table class="table table-hover">
+<thead class="thead-dark">
+ <tr> 	
+	<th scope="col">Nombre</th>
+	<th scope="col">Empresa</th>
+	<th scope="col">Productos</th>
+	<th></th>
+	<th></th>
+ </tr>
+</thead>
+
+<tbody>
+<tr th:each="trabajador : ${trabajadores}">
+
+	<td th:text= "${trabajador?.nombre}"/>
+
+	<td th:text= "|${trabajador.trabaja.nombre} (${trabajador.trabaja.trabajadores.size()}) |"/>
+	
+	
+	<td><th:block th:each="producto:${trabajador.productosHechos}" th:text="|${producto.nombre}, |"/></td>
+	
+	
+	<td> 
+	  <form id="id-form" action="/trabajador/u" method="post">
+			<input type="hidden" name="idTrabajador" th:value="${trabajador.id}"/>
+			<button onclick="submit()">
+			<img src="/img/lapiz.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	
+	<td> 
+	  <form id="id-form" action="/trabajador/d" method="post">
+			<input type="hidden" name="borrarIdTrabajador" th:value="${trabajador.id}"/>
+			<button onclick="submit()">
+			<img src="/img/papelera.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	
+</tr>
+
+ </tbody>
+</table>
+</div>
+</html>

@@ -1,0 +1,50 @@
+<div class="container">
+<h1>PRODUCTOS</h1>
+
+<form action="/productos/c">
+	<input type="submit" class="btn btn-primary" value="Nuevo Producto"/>
+</form>
+<br>
+
+<h3> Lista de productos </h3>
+
+<table class="table table-hover">
+<thead class="thead-dark">
+ <tr> 	
+	<th scope="col">Nombre</th>
+	<th scope="col">Tipo</th>
+	<th></th>
+	<th></th>
+ </tr>
+ </thead>
+
+<tbody>
+	<tr th:each="producto : ${productos}">
+	<td th:text= "${producto.nombre}"/>
+	
+	<td th:text= "${producto.tipo}"/>
+	
+
+	<td class="row"> 
+	  <form id="id-form" action="/productos/u" method="post">
+			<input type="hidden" name="productosId" th:value="${producto.id}"/>
+			<button onclick="submit()">
+			<img src="/img/lapiz.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	
+	<td> 
+	  <form id="id-form" action="/productos/d" method="post">
+			<input type="hidden" name="borrarIdProductos" th:value="${producto.id}"/>
+			<button onclick="submit()">
+			<img src="/img/papelera.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	  
+ </tr>
+ </tbody>
+</table>
+</div>
+</html>

@@ -1,0 +1,13 @@
+<div class="container">
+<h1>EDITAR PAIS</h1>
+
+<form action="/pais/uPost" method="POST">
+	<label for="idNombre"/>
+	<input type="text" th:value="${pais.nombre}" id="idNombre" name="nombre"/>
+	
+	<input type="hidden" name="idPais" th:value="${pais.id}"/>
+	
+	<input type="submit" class="btn btn-warning" value="Editar"/>
+</form>
+</div>
+<br>

@@ -1,0 +1,64 @@
+<div class="container">
+<h1>PERSONAS</h1>
+
+<form action="/persona/c">
+	<input type="submit" class="btn btn-primary" value="Nueva Persona"/>
+</form>
+<br>
+
+<h3> Lista de personas </h3>
+
+<table class="table table-hover">
+<thead class="thead-dark">
+ <tr> 	
+	<th scope="col">Nombre</th>
+	<th scope="col">Edad</th>
+	<th scope="col">Pais Nacimiento</th>
+	<th scope="col">Pais Residencia</th>
+	<th scope="col">Aficiones gustan</th>
+	<th scope="col">Aficiones odia</th>
+	<th></th>
+	<th></th>
+ </tr>
+</thead>
+
+<tbody>
+<tr th:each="persona : ${personas}">
+	<!-- Poner la interrogacion detras del nombre por si da error al ser null en BD vacia -->
+	<td th:text= "${persona?.nombre}"/>
+	
+	<!--<td th:text= "${persona.fecha}"/>-->
+	<td th:text="${persona.getEdad()}"/>
+	
+	<!-- Saber el tamaño de una coleccion, en este caso de nativos -->
+	<td th:text= "|${persona.nace.nombre} (${persona.nace.nativos.size()}) |"/>
+	
+	<td th:text= "${persona.reside.nombre}"/>
+	
+	<td><th:block th:each="aficion:${persona.aficionesGusta}" th:text="|${aficion.nombre}, |"/></td>
+	
+	<td><th:block th:each="aficion:${persona.aficionesOdia}" th:text="|${aficion.nombre}, |"/></td>
+	
+	<td> 
+	  <form id="id-form" action="/persona/u" method="post">
+			<input type="hidden" name="idPersona" th:value="${persona.id}"/>
+			<button onclick="submit()">
+			<img src="/img/lapiz.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	
+	<td> 
+	  <form id="id-form" action="/persona/d" method="post">
+			<input type="hidden" name="borrarIdPersona" th:value="${persona.id}"/>
+			<button onclick="submit()">
+			<img src="/img/papelera.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+</tr>
+
+ </tbody>
+</table>
+</div>
+</html>

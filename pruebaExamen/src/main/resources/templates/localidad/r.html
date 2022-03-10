@@ -1,0 +1,53 @@
+<div class="container">
+<h1>LOCALIDADES</h1>
+
+<form action="/localidad/c">
+	<input type="submit" class="btn btn-primary" value="Nueva Localidad"/>
+</form>
+<br>
+
+<h3> Lista de paises </h3>
+
+<table class="table table-hover">
+<thead class="thead-dark">
+ <tr> 	
+	<th scope="col">Nombre</th>
+	<th scope="col">Provincia</th>
+	<th></th>
+	<th></th>
+ </tr>
+</thead>
+
+<tbody>
+ <tr th:each="localidad : ${localidades}">
+	<td th:text= "${localidad.nombre}"></td>
+	
+	<td th:text= "${localidad.provincia}"></td>
+<!--
+	<td><th:block th:each="persona:${pais.nativos}" th:text="|${persona.nombre}, |"/>
+		<th:block th:text="|(${pais.nativos.size()})|"/>
+		</td>
+-->
+	<td> 
+	  <form id="id-form" action="/localidad/u" method="post">
+			<input type="hidden" name="localidadId" th:value="${localidad.id}"/>
+			<button onclick="submit()">
+			<img src="/img/lapiz.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+	
+	<td> 
+	  <form id="id-form" action="/localidad/d" method="post">
+			<input type="hidden" name="borrarIdLocalidad" th:value="${localidad.id}"/>
+			<button onclick="submit()">
+			<img src="/img/papelera.png" width="30" heigh="30"/>
+			</button>
+	  </form>
+	</td>
+ </tr>
+ 
+ </tbody>
+ </table>
+</div>
+</html>

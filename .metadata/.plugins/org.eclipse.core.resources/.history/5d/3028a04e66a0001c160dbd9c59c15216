@@ -1,0 +1,40 @@
+package org.gullon.pap2022.controller;
+
+import java.nio.file.Files;
+
+
+import java.util.List;
+
+
+import org.gullon.pap2022.repository.PaisRepository;
+import org.gullon.pap2022.repository.PersonaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+@Controller
+public class PersonaController {
+	
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@Autowired
+	private PaisRepository paisRepository;
+	
+	
+	
+	@GetMapping("/personas")
+    public List<Persona> getUsers() {
+        return (List<Persona>) personaRepository.findAll();
+    }
+	
+	
+	@PostMapping("/personas")
+    void addUser(@RequestBody Persona persona) {
+		personaRepository.save(persona);
+    }
+	
+	
+}

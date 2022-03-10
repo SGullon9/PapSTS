@@ -1,0 +1,13 @@
+<div class="container">
+<h1>EDITAR AFICION</h1>
+
+<form action="/aficion/uPost" method="POST">
+	<label for="idNombre"/>
+	<input type="text" id="idNombre" name="nombre" />
+	
+	<input type="hidden" name="idAficion" th:value="${aficion.id}"/>
+	
+	<input type="submit" class="btn btn-warning" value="Editar Aficion"/>
+</form>
+</div>
+<br>

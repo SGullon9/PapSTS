@@ -1,0 +1,35 @@
+<div class="container">
+<h1>NUEVO TRABAJADOR</h1>
+
+<form action="/trabajador/cPost" method="POST">
+	<div>
+	Nombre:
+	<label for="idNombre"/>
+	<input type="text" id="idNombre" name="nombre" autofocus="autofocus"/>
+	</div>
+	
+	<div>
+	Password:
+	<label for="idPwd"/>
+	<input type="password" id="idPwd" name="pwd"/>
+	</div>
+	
+	<div>
+	 <span>Empresa</span>
+	  <select name="IdEmpresaTrabaja">
+	    <option th:each="empresa:${empresas}" th:value="${empresa.id}" th:text="${empresa.nombre}"></option>
+	  </select>
+	</div>
+	  
+	 <fieldset>
+	  <legend>Productos que hace</legend>
+	   <div th:each="producto:${productos}">
+	    <input th:id="|id-${producto.id}|" type="checkbox" name="idsProductos[]" th:value="${producto.id}"/>
+	    <label th:for="|id-${producto.id}|" th:text="${producto.nombre}"/>
+	   </div>
+	 </fieldset>
+	 
+	<input type="submit" class="btn btn-warning" value="Crear"/>
+</form>
+</div>
+<br>
